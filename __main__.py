@@ -4,7 +4,12 @@ import pulumi
 from pulumi_aws import s3
 
 # Create an AWS resource (S3 Bucket)
-bucket = s3.Bucket('my-bucket')
 
-# Export the name of the bucket
-pulumi.export('bucket_name', bucket.id)
+bucketList = ["Raw-bucket", "Trusted-bucket", "Cleansed-bucket"]
+
+for item in bucketList:
+
+    bucket = s3.Bucket(item)
+
+    # Export the name of the bucket
+    pulumi.export('bucket_name', bucket.id)
